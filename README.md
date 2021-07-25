@@ -23,7 +23,6 @@ Admin Credentials : Username - admin
 
 NOTE - Since the application is hosted on a free dyno of heroku, please wait for the application to load (about 1 to 2 minutes) for the first time.
 
-Link for IOS App - https://github.com/AryanShrivastava-11/managED/
 Link for video - https://drive.google.com/file/d/1I0JKIE6a-HXESa8JMW_3hxzvCxUx7ruB/view
 
 ## Screenshots:
@@ -53,3 +52,7 @@ Link for video - https://drive.google.com/file/d/1I0JKIE6a-HXESa8JMW_3hxzvCxUx7r
 - Open application.properties file and add the database credentials(src/main/resources/application.properties)
 - Build the application
 - Run the Application Class (src/main/java/com/abhinav/tutee/TuteeApplication.java)
+
+## IOS App:
+
+Link for IOS App - https://github.com/AryanShrivastava-11/managED/
