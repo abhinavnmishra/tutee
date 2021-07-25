@@ -21,19 +21,19 @@ public class EmailService {
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd MMMM yyyy");
         String subject = company + ": Invitation to Interview";
         String body = "Dear " + fname + ",\n" +
-                "\n" +
+                "\n<br>" +
                 "Thank you for your application at " + company + ". \n" +
-                "\n" +
+                "\n<br>" +
                 "We would like to invite you to interview for the role with our Technical Recruiter John. The interview will last 2 hours in total.\n" +
-                "\n" +
+                "\n<br>" +
                 simpleDateFormat.format(date) + "\n" +
-                "\n" +
+                "\n<br>" +
                 "We look forward to speaking with you. \n" +
-                "\n" +
+                "\n<br>" +
                 "Sincerely,\n" +
-                "\n" +
+                "\n<br>" +
                 "Placement Office\n" +
-                "\n" +
+                "\n<br>" +
                 "Dayananda Sagar College of Engineering";
         return sendEmail(to, subject, body);
     }
@@ -41,19 +41,19 @@ public class EmailService {
     public Boolean success(String to, String company, String fname) throws MessagingException, EmailException{
         String subject = "Your interview with " + company;
         String body = "Dear " + fname + ",\n" +
-                "\n" +
+                "\n<br>" +
                 "Thank you for taking the time to interview with " + company + ". We enjoyed getting to know you. We have completed all of our interviews.\n" +
-                "\n" +
+                "\n<br>" +
                 "We are pleased to inform you that we would like to offer you the Software Developer position. We believe your past experience and strong Skills will be an asset to our company. Your anticipated starting date is 1st August 2021.\n" +
-                "\n" +
+                "\n<br>" +
                 "The next steps in the process will be shared with you soon.\n" +
-                "\n" +
+                "\n<br>" +
                 "We look forward to hearing from you.\n" +
-                "\n" +
+                "\n<br>" +
                 "Sincerely,\n" +
-                "\n" +
+                "\n<br>" +
                 "Naveen Bansal\n" +
-                "\n" +
+                "\n<br>" +
                 "Technical Recruiter\n" +
                 company + "";
         return sendEmail(to, subject, body);
