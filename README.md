@@ -19,8 +19,12 @@ It helps the visiting companies select students having relevant skills and grade
 A copy of the application is deployed on heroku. Link : https://managed-ui.herokuapp.com/
 Admin Credentials : Username - admin
                     Password - password
+                  
 
 NOTE - Since the application is hosted on a free dyno of heroku, please wait for the application to load (about 1 to 2 minutes) for the first time.
+
+Link for IOS App - https://github.com/AryanShrivastava-11/managED/
+Link for video - https://drive.google.com/file/d/1I0JKIE6a-HXESa8JMW_3hxzvCxUx7ruB/view
 
 ## Screenshots:
 
