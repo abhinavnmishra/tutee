@@ -37,6 +37,7 @@ NOTE - Since the application is hosted on a free dyno of heroku, please wait for
 ## Stack and Architecture
 
 - The backend and the frontend are decoupled and are connected to each other via REST APIs.
+- Link to Frontend repository : https://github.com/abhinavnmishra/managedFrontend
 - The backend follows MVC Architecture.
 - The backend is purely built using Java Spring Boot.
 - Java Version : 8
