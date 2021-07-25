@@ -41,11 +41,13 @@ NOTE - Since the application is hosted on a free dyno of heroku, please wait for
 - The backend follows MVC Architecture.
 - The backend is purely built using Java Spring Boot.
 - Java Version : 8
+- Database used : PostgreSQL
 - Swagger is used for backend documentation : https://digigrad.herokuapp.com/swagger-ui.html
 
 
 ## Installation:
 - Clone this repository to your local machine. 
 - Open it using any Java IDE like IntelliJ. 
+- Open application.properties file and add the database credentials(src/main/resources/application.properties)
 - Build the application
 - Run the Application Class (src/main/java/com/abhinav/tutee/TuteeApplication.java)
