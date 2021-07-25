@@ -32,8 +32,6 @@ NOTE - Since the application is hosted on a free dyno of heroku, please wait for
 </p>
 
 
-## Video Link:
-
 ## Stack and Architecture
 
 - The backend and the frontend are decoupled and are connected to each other via REST APIs.
