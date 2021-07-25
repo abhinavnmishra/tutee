@@ -7,17 +7,23 @@ import com.abhinav.tutee.model.Academics;
 import com.abhinav.tutee.model.Invite;
 import com.abhinav.tutee.model.Opening;
 import com.abhinav.tutee.model.Student;
+import com.abhinav.tutee.model.consts.Skill;
 import com.abhinav.tutee.repository.*;
 import org.apache.commons.mail.EmailException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.mail.MessagingException;
+import java.security.Principal;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 @Service
 public class AdminService {
+
+    @Autowired
+    AdminRepository adminRepository;
 
     @Autowired
     StudentRepository studentRepository;
@@ -46,7 +52,7 @@ public class AdminService {
     @Autowired
     EmailService emailService;
 
-    public AllStatsDto getAllStats(){
+    public AllStatsDto getAllStats(Principal principal){
         AllStatsDto dto = new AllStatsDto();
         List<List<Invite>> list = new ArrayList<>();
         List<Opening> openings = openingRepository.findAll();
@@ -57,6 +63,8 @@ public class AdminService {
         dto.setInvites(list);
         dto.setOpenings(openings);
         dto.setNoStudents(studentRepository.count());
+        dto.setAdmin(adminRepository.getByAccount_Username(principal.getName()));
+        dto.setSkills(Arrays.asList(Skill.values()));
         return dto;
     }
 
@@ -66,6 +74,7 @@ public class AdminService {
         opening.setCompany(createOpeningDto.getCompany());
         opening.setDescription(createOpeningDto.getDescription());
         opening.setDate(createOpeningDto.getDate());
+        opening.setStatus(Boolean.FALSE);
         opening = openingRepository.save(opening);
 
         List<Student> students = new ArrayList<>();
@@ -108,6 +117,9 @@ public class AdminService {
     public List<Student> updateOpening(CreateOpeningDto dto) throws MessagingException, EmailException{
 
         List<Student> students = getAllStudentsByOpeningId(dto.getId());
+        Opening opening = openingRepository.getById(dto.getId());
+        opening.setStatus(Boolean.TRUE);
+        openingRepository.save(opening);
         for (Student student : students){
             Invite invite = inviteRepository.findAllByStudent_IdAndOpening_Id(student.getId(), dto.getId());
             if (dto.getStudentIdList().contains(student.getId())){

@@ -116,4 +116,10 @@ public class StudentController {
         return new ResponseEntity<>(certificateRepository.getAllByStudent_Account_Username(principal.getName()), HttpStatus.OK);
     }
 
+    @Secured("ROLE_STUDENT")
+    @GetMapping("/allSkills")
+    public ResponseEntity<?> allSkills(Principal principal) throws Exception {
+        return new ResponseEntity<>(Skill.values(), HttpStatus.OK);
+    }
+
 }

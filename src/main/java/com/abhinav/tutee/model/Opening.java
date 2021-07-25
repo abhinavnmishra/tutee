@@ -24,4 +24,6 @@ public class Opening {
 
     private Date date;
 
+    private Boolean status;
+
 }

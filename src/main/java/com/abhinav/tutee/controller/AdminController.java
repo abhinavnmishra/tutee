@@ -36,8 +36,8 @@ public class AdminController {
 
     @Secured("ROLE_ADMIN")
     @GetMapping("/getAllStats")
-    public ResponseEntity<?> getAllStats() throws Exception {
-        return new ResponseEntity<>(adminService.getAllStats(), HttpStatus.OK);
+    public ResponseEntity<?> getAllStats(Principal principal) throws Exception {
+        return new ResponseEntity<>(adminService.getAllStats(principal), HttpStatus.OK);
     }
 
     @Secured("ROLE_ADMIN")
@@ -77,6 +77,12 @@ public class AdminController {
         catch (Exception e){
             return new ResponseEntity<>(e, HttpStatus.BAD_REQUEST);
         }
+    }
+
+    @Secured("ROLE_ADMIN")
+    @GetMapping("/getAllStudentsByOpeningId")
+    public ResponseEntity<?> getAllStudents(Integer id) throws Exception {
+        return new ResponseEntity<>(adminService.getAllStudentsByOpeningId(id), HttpStatus.OK);
     }
 
 

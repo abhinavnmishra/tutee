@@ -1,6 +1,7 @@
 package com.abhinav.tutee.dto;
 
 import com.abhinav.tutee.model.*;
+import com.abhinav.tutee.model.consts.Skill;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -18,5 +19,6 @@ public class StudentInfoDto {
     private List<Invite> invites;
     private Academics academics;
     private Student student;
+    private List<Skill> skills;
 
 }

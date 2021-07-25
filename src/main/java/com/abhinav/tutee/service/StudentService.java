@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 
 import java.security.Principal;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 @Service
@@ -63,12 +64,18 @@ public class StudentService {
         List<Certificate> certificates = certificateRepository.getAllByStudent_Account_Username(name);
         List<Academics> academics = academicsRepository.getAllByStudent_Account_Username(name);
 
-        studentInfoDto.setAcademics(academics.get(0));
+        if (!academics.isEmpty()){
+            studentInfoDto.setAcademics(academics.get(0));
+        }
+        else {
+            studentInfoDto.setAcademics(new Academics());
+        }
         studentInfoDto.setCertificates(certificates);
         studentInfoDto.setExperiences(experiences);
         studentInfoDto.setProjects(projects);
         studentInfoDto.setInvites(invites);
         studentInfoDto.setStudent(student);
+        studentInfoDto.setSkills(Arrays.asList(Skill.values()));
 
         return studentInfoDto;
 
@@ -77,7 +84,7 @@ public class StudentService {
     public Academics addAcademics(Principal principal, Academics academics){
         Student student = studentRepository.getByAccount_Username(principal.getName());
         Academics academics1;
-        if (academics.getId() == 0){
+        if (academics.getId() == null){
             academics1 = new Academics();
         }
         else {

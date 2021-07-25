@@ -34,12 +34,7 @@ public class OpenController {
 
     @PostMapping("/createStudent")
     public ResponseEntity<?> createStudent(@RequestBody @Valid CreateStudentDto createStudentDto) {
-        try{
-            return new ResponseEntity<>(studentService.createStudent(createStudentDto), HttpStatus.OK);
-        }
-        catch (Exception e){
-            return new ResponseEntity<>(e, HttpStatus.BAD_REQUEST);
-        }
+        return new ResponseEntity<>(studentService.createStudent(createStudentDto), HttpStatus.OK);
     }
 
     @PostMapping("/createAdmin")
