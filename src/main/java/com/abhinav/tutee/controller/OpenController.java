@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.security.Principal;
+import java.util.concurrent.TimeUnit;
 
 @RestController
 @CrossOrigin
@@ -50,6 +51,19 @@ public class OpenController {
     @GetMapping("/getStudentInfo")
     public ResponseEntity<?> getStudentInfo(String username) throws Exception {
         return new ResponseEntity<>(studentService.studentDto(username), HttpStatus.OK);
+    }
+
+    @GetMapping("/wait")
+    public ResponseEntity<?> wait(Integer a) throws Exception {
+
+        try {
+            TimeUnit.SECONDS.sleep(a);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+            return new ResponseEntity<>("No", HttpStatus.OK);
+        }
+
+        return new ResponseEntity<>("Yes", HttpStatus.OK);
     }
 
 }
