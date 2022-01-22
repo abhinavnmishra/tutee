@@ -1,8 +1,10 @@
 package com.abhinav.tutee.service;
 
+import com.abhinav.tutee.config.DigigradRowMapper;
 import com.abhinav.tutee.dto.AllStatsDto;
 import com.abhinav.tutee.dto.CreateOpeningDto;
 import com.abhinav.tutee.dto.QueryStudentDto;
+import com.abhinav.tutee.dto.ReportDto;
 import com.abhinav.tutee.model.Academics;
 import com.abhinav.tutee.model.Invite;
 import com.abhinav.tutee.model.Opening;
@@ -11,13 +13,14 @@ import com.abhinav.tutee.model.consts.Skill;
 import com.abhinav.tutee.repository.*;
 import org.apache.commons.mail.EmailException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.BeanPropertyRowMapper;
+import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.stereotype.Service;
 
 import javax.mail.MessagingException;
 import java.security.Principal;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 
 @Service
 public class AdminService {
@@ -51,6 +54,9 @@ public class AdminService {
 
     @Autowired
     EmailService emailService;
+
+    @Autowired
+    JdbcTemplate jdbcTemplate;
 
     public AllStatsDto getAllStats(Principal principal){
         AllStatsDto dto = new AllStatsDto();
@@ -134,6 +140,11 @@ public class AdminService {
 
         return students;
 
+    }
+
+    public Collection<ReportDto> getReport(){
+        DigigradRowMapper rowMapper = new DigigradRowMapper();
+        return jdbcTemplate.query("select count(*) as value , skills as skill from student_skills group by skills order by value", rowMapper);
     }
 
 }

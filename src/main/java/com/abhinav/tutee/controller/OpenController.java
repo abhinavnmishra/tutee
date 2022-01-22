@@ -66,4 +66,9 @@ public class OpenController {
         return new ResponseEntity<>("Yes", HttpStatus.OK);
     }
 
+    @GetMapping("/getReport")
+    public ResponseEntity<?> getReport() throws Exception {
+        return new ResponseEntity<>(adminService.getReport(), HttpStatus.OK);
+    }
+
 }
