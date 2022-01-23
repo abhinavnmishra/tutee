@@ -144,7 +144,7 @@ public class AdminService {
 
     public Collection<ReportDto> getReport(){
         DigigradRowMapper rowMapper = new DigigradRowMapper();
-        return jdbcTemplate.query("select count(*) as value , skills as skill from student_skills group by skills order by value", rowMapper);
+        return jdbcTemplate.query("select count(*) as value , skills as skill from student_skills group by skills order by value desc", rowMapper);
     }
 
 }
